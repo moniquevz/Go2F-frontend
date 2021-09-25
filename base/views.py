@@ -6,14 +6,20 @@ from rest_framework.response import Response
 from .models import Product
 from .models import Article
 from .models import Template
+from .models import Event
+from .models import ExclusiveContent
 
 from .products import products
 from .articles import articles
 from .templates import templates
 
+
 from .serializers import ProductSerializer
 from .serializers import ArticleSerializer
 from .serializers import TemplateSerializer
+from .serializers import EventSerializer
+from .serializers import ExclusiveContentSerializer
+
 
 # Create your views here.
 
@@ -97,3 +103,27 @@ def getTemplate(request, pk):
     serializer = TemplateSerializer(template, many = False)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getEvents(request):
+    events = Event.objects.all()
+    serializer = EventSerializer(events, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getEvent(request, pk):
+    event = Event.objects.get(_id=pk)
+    serializer = EventSerializer(event, many = False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getExclusiveContents(request):
+    exclusivecontents = ExclusiveContent.objects.all()
+    serializer = ExclusiveContentSerializer(exclusivecontents, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getExclusiveContent(request, pk):
+    exclusivecontent = ExclusiveContent.objects.get(_id=pk)
+    serializer = ExclusiveContentSerializer(exclusivecontent, many = False)
+    return Response(serializer.data)

@@ -14,6 +14,7 @@ class Product(models.Model):
         max_digits=7, decimal_places=2, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
+    website = models.CharField(max_length=100, default='SOME STRING')
 
     def __str__(self):
         return self.name
@@ -29,6 +30,7 @@ class Article(models.Model):
         max_digits=7, decimal_places=2, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
+    website = models.CharField(max_length=100, default='SOME STRING')
 
     def __str__(self):
         return self.name
@@ -44,6 +46,31 @@ class Template(models.Model):
         max_digits=7, decimal_places=2, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
+    website = models.CharField(max_length=100, default='SOME STRING')
+
+    def __str__(self):
+        return self.name
+
+class Event(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    category = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    _id = models.AutoField(primary_key=True, editable=False)
+    website = models.CharField(max_length=100, default='SOME STRING')
+
+    def __str__(self):
+        return self.name
+
+class ExclusiveContent(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    category = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    _id = models.AutoField(primary_key=True, editable=False)
+    website = models.CharField(max_length=100, default='SOME STRING')
 
     def __str__(self):
         return self.name

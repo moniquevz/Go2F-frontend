@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from .models import Product
 from .models import Article
 from .models import Template
+from .models import Event
+from .models import ExclusiveContent
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -18,4 +20,14 @@ class ArticleSerializer(serializers.ModelSerializer):
 class TemplateSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Template
+        fields = '__all__'
+
+class EventSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Event
+        fields = '__all__'
+
+class ExclusiveContentSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = ExclusiveContent
         fields = '__all__'

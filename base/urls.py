@@ -11,6 +11,10 @@ urlpatterns = [
     path('articles/<str:pk>', views.getArticle, name="article"),
     path('templates/', views.getTemplates, name="templates"),
     path('templates/<str:pk>', views.getTemplate, name="template"),
+    path('events/', views.getEvents, name="events"),
+    path('events/<str:pk>', views.getEvent, name="event"),
+    path('exclusivecontents/', views.getExclusiveContents, name="exclusivecontents"),
+    path('exclusivecontents/<str:pk>', views.getExclusiveContent, name="exclusivecontent"),
     
 
 ]
